@@ -1,0 +1,5 @@
+1. Use a python3 venv
+2. activate the new venv
+3. change to git root dir
+4. issue pip install --user --requirement requirements.txt
+5. Then run pytest
