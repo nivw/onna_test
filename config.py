@@ -6,7 +6,13 @@ config.auth = Munch()
 config.auth.auth_url = config.base_url + 'auth/oauth/get_auth_token'
 config.auth.username = "qateam.onna@destinoalgum.com.br"
 config.auth.password = "Onna12345678!"
-
+config.auth.login_data_request = {
+               "grant_type": "user",
+               "username": config.auth.username,
+               "password": config.auth.password,
+               "scopes": ["qatest"],
+               "client_id": "userdashboard"
+               }
 config.oauth_url = config.base_url + 'api/qatest/qatest/@oauthgetcode?client_id=userdashboard&scope=qatest'
 config.headers = Munch({
     'authority': 'enterprise.onna.com',

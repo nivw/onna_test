@@ -1,7 +1,10 @@
 import requests
 from config import config
-from auth import get_login_token
+from auth import Auth
 import json
+from logbook import Logger
+
+log = Logger('Workspace')
 
 
 def get_id(name):
@@ -10,7 +13,7 @@ def get_id(name):
 
 def create_workspace(name):
     data = {
-        "@type":"Group",
+        "@type": "Group",
         "title": name,
         "group_app_type":"web",
         "id": get_id(name)
@@ -18,9 +21,9 @@ def create_workspace(name):
 
     headers = config.headers
     headers.referer = 'https://enterprise.onna.com/qatest/user/dashboard/workspace/list'
-    headers.update(get_login_token())
+    headers.update(Auth(config).get_login_token())
     response = requests.post(config.workspace.create_url, data=json.dumps(data), headers=headers)
-    #print(headers)
+    log.info(F"Response to workspace create is: {response}")
     return response
 """
 curl 'https://enterprise.onna.com/api/qatest/qatest/groups'

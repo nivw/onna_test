@@ -6,7 +6,8 @@ from setuptools import setup, find_packages
 _INSTALL_REQUIRES = [
     "requests",
     "pytest",
-    "munch"
+    "munch",
+    "logbook"
 ]
 
 setup(name="assigment1",
